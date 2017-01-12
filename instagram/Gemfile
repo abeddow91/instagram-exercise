@@ -42,8 +42,10 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'rspec'
-  gem 'capybara'
+  # includes rspec itself in a wrapper to work neatly with rials
+  gem 'rspec-rails'
+  # replaces Rails’ default fixtures for feeding test data to the test suite with much more preferable factories.  gem 'factory_girl_rails'
+  # gem 'capybara'
 end
 
 group :development do
@@ -53,6 +55,17 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  #generates names, email addresses, and other placeholders for factories
+  gem 'faker'
+  #makes it easy to programatically simulate your users interactions with your application
+  gem 'capybara'
+  # watches you application and tests and runs specs for you automatically when it detects changes
+  gem 'guard-rspec'
+  # opens your default web browser upon failed intergration specs to show you what your application is rendering
+  gem 'launchy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
